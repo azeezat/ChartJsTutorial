@@ -1,0 +1,297 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azeezat's sample code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"></script>
+</head>
+
+<body>
+    <h1>A Chart JS solution</h1>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        let apiData = [
+            {
+                Date: "2019-09-27 09-PM",
+                Symbol: "BTCMXN",
+                Open: 159649.75,
+                High: 163990.81,
+                Low: 158502.95,
+                Close: 163990.81,
+                "Volume BTC": 7.81,
+                "Volume MXN": 1246768.73,
+            },
+            {
+                Date: "2019-09-27 08-PM",
+                Symbol: "BTCMXN",
+                Open: 158100,
+                High: 159650,
+                Low: 157500.01,
+                Close: 159649.75,
+                "Volume BTC": 11.88,
+                "Volume MXN": 1885840.92,
+            },
+            {
+                Date: "2019-09-27 07-PM",
+                Symbol: "BTCMXN",
+                Open: 159000,
+                High: 159000,
+                Low: 158000.52,
+                Close: 158100,
+                "Volume BTC": 7.99,
+                "Volume MXN": 1267534.73,
+            },
+            {
+                Date: "2019-09-27 06-PM",
+                Symbol: "BTCMXN",
+                Open: 158900,
+                High: 159998.98,
+                Low: 158500,
+                Close: 159000,
+                "Volume BTC": 5.658,
+                "Volume MXN": 901676.19,
+            },
+            {
+                Date: "2019-09-27 05-PM",
+                Symbol: "BTCMXN",
+                Open: 159490.62,
+                High: 159490.62,
+                Low: 157500.01,
+                Close: 158900,
+                "Volume BTC": 8.335,
+                "Volume MXN": 1322733.59,
+            },
+            {
+                Date: "2019-09-27 04-PM",
+                Symbol: "BTCMXN",
+                Open: 157499.99,
+                High: 159999,
+                Low: 157000,
+                Close: 159490.62,
+                "Volume BTC": 15.67,
+                "Volume MXN": 2490281.06,
+            },
+            {
+                Date: "2019-09-27 03-PM",
+                Symbol: "BTCMXN",
+                Open: 157000,
+                High: 157500,
+                Low: 155350,
+                Close: 157499.99,
+                "Volume BTC": 8.214,
+                "Volume MXN": 1286643.46,
+            },
+            {
+                Date: "2019-09-27 02-PM",
+                Symbol: "BTCMXN",
+                Open: 157600,
+                High: 158500,
+                Low: 156501.04,
+                Close: 157000,
+                "Volume BTC": 14.01,
+                "Volume MXN": 2206170.98,
+            },
+            {
+                Date: "2019-09-27 01-PM",
+                Symbol: "BTCMXN",
+                Open: 158359.37,
+                High: 158678.35,
+                Low: 156857.81,
+                Close: 157600,
+                "Volume BTC": 4.63,
+                "Volume MXN": 729991.05,
+            },
+            {
+                Date: "2019-09-27 12-PM",
+                Symbol: "BTCMXN",
+                Open: 158236.91,
+                High: 158814.3,
+                Low: 154699.59,
+                Close: 158359.37,
+                "Volume BTC": 5.369,
+                "Volume MXN": 836497.21,
+            },
+            {
+                Date: "2019-09-27 11-AM",
+                Symbol: "BTCMXN",
+                Open: 158496.98,
+                High: 159215.01,
+                Low: 156500,
+                Close: 158236.91,
+                "Volume BTC": 1.351,
+                "Volume MXN": 214213.59,
+            },
+            {
+                Date: "2019-09-27 10-AM",
+                Symbol: "BTCMXN",
+                Open: 157900,
+                High: 158499.99,
+                Low: 157900,
+                Close: 158496.98,
+                "Volume BTC": 0.1392,
+                "Volume MXN": 21993.15,
+            },
+            {
+                Date: "2019-09-27 09-AM",
+                Symbol: "BTCMXN",
+                Open: 157274.42,
+                High: 158499.98,
+                Low: 156560,
+                Close: 157900,
+                "Volume BTC": 0.1216,
+                "Volume MXN": 19199.02,
+            },
+            {
+                Date: "2019-09-27 08-AM",
+                Symbol: "BTCMXN",
+                Open: 158369.69,
+                High: 158499.99,
+                Low: 157274.42,
+                Close: 157274.42,
+                "Volume BTC": 0.2971,
+                "Volume MXN": 47051.13,
+            },
+            {
+                Date: "2019-09-27 07-AM",
+                Symbol: "BTCMXN",
+                Open: 158366.68,
+                High: 158369.69,
+                Low: 156566.07,
+                Close: 158369.69,
+                "Volume BTC": 0.691,
+                "Volume MXN": 109374.2,
+            },
+            {
+                Date: "2019-09-27 06-AM",
+                Symbol: "BTCMXN",
+                Open: 157971.29,
+                High: 158369.7,
+                Low: 156403.41,
+                Close: 158366.68,
+                "Volume BTC": 1.371,
+                "Volume MXN": 216186.43,
+            },
+            {
+                Date: "2019-09-27 05-AM",
+                Symbol: "BTCMXN",
+                Open: 158369.69,
+                High: 158369.69,
+                Low: 156300,
+                Close: 157971.29,
+                "Volume BTC": 1.917,
+                "Volume MXN": 300790.29,
+            },
+            {
+                Date: "2019-09-27 04-AM",
+                Symbol: "BTCMXN",
+                Open: 157500.01,
+                High: 159244.45,
+                Low: 157000,
+                Close: 158369.69,
+                "Volume BTC": 2.209,
+                "Volume MXN": 347890.31,
+            },
+            {
+                Date: "2019-09-27 03-AM",
+                Symbol: "BTCMXN",
+                Open: 158693.85,
+                High: 159691.06,
+                Low: 157101.01,
+                Close: 157500.01,
+                "Volume BTC": 4.384,
+                "Volume MXN": 694103.47,
+            },
+            {
+                Date: "2019-09-27 02-AM",
+                Symbol: "BTCMXN",
+                Open: 156661.92,
+                High: 159648.96,
+                Low: 156201.63,
+                Close: 158693.85,
+                "Volume BTC": 5.015,
+                "Volume MXN": 794215.34,
+            },
+            {
+                Date: "2019-09-27 01-AM",
+                Symbol: "BTCMXN",
+                Open: 156500,
+                High: 159733.47,
+                Low: 156127.77,
+                Close: 156661.92,
+                "Volume BTC": 5.885,
+                "Volume MXN": 927673.31,
+            },
+            {
+                Date: "2019-09-27 12-AM",
+                Symbol: "BTCMXN",
+                Open: 159100,
+                High: 160499.96,
+                Low: 156500,
+                Close: 156500,
+                "Volume BTC": 10.9,
+                "Volume MXN": 1737776.69,
+            },
+        ];
+        function formatValues(chartData) {
+            let formatedData = chartData.map(({ High }) => (High))
+            return formatedData
+        }
+
+        function formatLables(chartData) {
+            let formatedData = chartData.map(({ Date }) => (Date))
+            return formatedData
+        }
+
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [...formatLables(apiData)],
+                datasets: [{
+                    label: 'High',
+                    backgroundColor: "red",
+                    borderColor: "blue",
+                    data: [
+                        ...formatValues(apiData)
+                    ],
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'High'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
