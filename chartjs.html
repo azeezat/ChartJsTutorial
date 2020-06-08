@@ -234,8 +234,18 @@
                 "Volume MXN": 1737776.69,
             },
         ];
-        function formatValues(chartData) {
+        function formatHighValues(chartData) {
             let formatedData = chartData.map(({ High }) => (High))
+            return formatedData
+        }
+
+        function formatLowValues(chartData) {
+            let formatedData = chartData.map(({ Low }) => (Low))
+            return formatedData
+        }
+
+        function formatClosingValues(chartData) {
+            let formatedData = chartData.map(({ Close }) => (Close))
             return formatedData
         }
 
@@ -252,12 +262,32 @@
                 datasets: [{
                     label: 'High',
                     backgroundColor: "red",
-                    borderColor: "blue",
+                    borderColor: "green",
                     data: [
-                        ...formatValues(apiData)
+                        ...formatHighValues(apiData)
                     ],
                     fill: false,
-                }]
+                },
+
+                {
+                    label: 'Low',
+                    backgroundColor: "red",
+                    borderColor: "red",
+                    data: [
+                        ...formatLowValues(apiData)
+                    ],
+                    fill: false,
+                },
+                {
+                    label: 'Close',
+                    backgroundColor: "red",
+                    borderColor: "blue",
+                    data: [
+                        ...formatClosingValues(apiData)
+                    ],
+                    fill: false,
+                }
+                ]
             },
             options: {
                 responsive: true,
